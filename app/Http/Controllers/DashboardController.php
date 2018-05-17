@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Module;
+use App\Aluno;
 
 class DashboardController extends Controller {
 
     public function showDashboard() {
-
-        return view("dashboard", ['modules' => Module::all()]);
+        return view("dashboard", ['AlunoModel' => Aluno::all(), '']);
     }
 
 }

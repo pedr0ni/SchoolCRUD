@@ -13,3 +13,5 @@
 
 Route::get('/', 'DashboardController@showDashboard');
 Route::get('/service/status', 'StatusController@showStatus');
+
+Route::get('/modulo/alunos', 'AlunoController@showList');
