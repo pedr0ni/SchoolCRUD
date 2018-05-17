@@ -1,0 +1,7 @@
+public/
+.env
+bootstrap/
+resources/
+storage/
+testes/
+vendor/
