@@ -6,20 +6,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'sdl_users';
+    public $timestamps = false;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'password', 'email', 'org_id', 'remember_token', 'created', 'updated'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
