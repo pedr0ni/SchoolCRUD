@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Hash;
 
 use App\User;
+use App\Organization;
 
 class LoginController extends Controller {
 
@@ -31,6 +32,23 @@ class LoginController extends Controller {
     }
 
     public function register(Request $request) {
+        $org_id = Organization::create([
+            'name'=>$request->input("org"),
+            'created'=>time(),
+            'updated'=>time()
+        ])->id;
+        User::create([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>bcrypt($request->input('password')),
+            'org_id'=>$org_id,
+            'created'=>time(),
+            'updated'=>time()
+        ]);
+        return response()->json([
+            'result'=>'success',
+            'message'=>'Usuário cadastrado com sucesso. Redirecionando para página de login...'
+        ]);
     }
 
 }

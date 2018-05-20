@@ -11,20 +11,26 @@
 |
 */
 
-Route::get('/', 'DashboardController@showDashboard');
+Route::get('/', 'DashboardController@showDashboard')->middleware('auth');
 
-Route::get('/service/status', 'SupportController@showStatus');
-Route::get('/service/support', 'SupportController@showSupport');
+Route::get('/service/status', 'SupportController@showStatus')->middleware('auth');
+Route::get('/service/support', 'SupportController@showSupport')->middleware('auth');
 Route::get('/service/support/create', 'SupportController@createTicket');
 Route::post('/service/support/update', 'SupportController@updateTicket');
 
-Route::get('/store/modules', 'StoreController@showModules');
+Route::get('/store/modules', 'StoreController@showModules')->middleware('auth');
+Route::get('/store/history', 'StoreController@showHistory')->middleware('auth');
 
-Route::get('/modulo/alunos', 'AlunoController@showList');
+Route::get('/modulo/alunos', 'AlunoController@showList')->middleware('auth');
 
 Route::post('/api/login', 'LoginController@login');
-Route::get('/api/register', 'LoginController@register');
+Route::post('/api/register', 'LoginController@register');
 Route::get('/api/logout', 'LoginController@logout');
+Route::get('/api/clearNotify', 'APIController@clearNotify');
+
 Route::get('/login', function() {
     return view('login');
+});
+Route::get('/register', function() {
+    return view('register');
 });

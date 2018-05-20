@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\Status;
+use App\StatusMessages;
 
 use Illuminate\Http\Request;
 
